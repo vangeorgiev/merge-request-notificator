@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GitLabConnector implements VersionControlCommunicator {
+public class VersionControlConnector implements VersionControlCommunicator {
 
     private static final String FILE_PATH = "/Users/georgiev/Downloads/mergeRequests.txt";
     private static final String DELIMITER = "\\|";
