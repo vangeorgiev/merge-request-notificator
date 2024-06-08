@@ -14,8 +14,8 @@ public class AppConfig {
     @Bean
     public List<ScheduledJobConfig> jobConfigs() {
         List<ScheduledJobConfig> jobConfigs = new ArrayList<>();
-        jobConfigs.add(new ScheduledJobConfig("Orion", "0 40 16 * * ?", "C06NK9JB31U"));
-        jobConfigs.add(new ScheduledJobConfig("Hydra", "0/123 * * * * ?", "C06NK9JB31U123132321"));
+        jobConfigs.add(new ScheduledJobConfig("Orion", "*/10 * * * * *"));
+        jobConfigs.add(new ScheduledJobConfig("Hydra", "0/50 * * * * ?"));
 
         return jobConfigs;
     }

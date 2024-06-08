@@ -16,29 +16,17 @@ public class FindItConnector implements TeamDataSourceCommunicator {
 
     @Override
     public List<String> getProjectNamesOwnedBy(String teamName) {
-        List<String> projectNames = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(PROJECT_NAMES_FILE_PATH))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String currentTeamName = parts[0].trim();
-                    if (currentTeamName.equals(teamName)) {
-                        String[] projects = parts[1].split(",");
-                        projectNames.addAll(Arrays.asList(projects));
-                    }
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return projectNames;
+        return iterateOverFile(PROJECT_NAMES_FILE_PATH, teamName);
     }
 
     @Override
     public List<String> getTeamMembers(String teamName) {
+        return iterateOverFile(USERS_FILE_PATH, teamName);
+    }
+
+    private List<String> iterateOverFile(String usersFilePath, String teamName) {
         List<String> teamUsers = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(USERS_FILE_PATH))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(usersFilePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(":");

@@ -14,7 +14,6 @@ public class Scheduler {
     private final ReportService reportService;
     private final TaskScheduler taskScheduler;
     private final List<ScheduledJobConfig> jobConfigs;
-    public static ThreadLocal<String> threadLocalVariable = new ThreadLocal<>();
 
     public Scheduler(ReportService reportService, List<ScheduledJobConfig> jobConfigs, ThreadPoolTaskScheduler taskScheduler) {
         this.reportService = reportService;
@@ -25,7 +24,6 @@ public class Scheduler {
     public void scheduleJobs() {
         jobConfigs.forEach(jobConfig -> {
             Runnable task = () -> {
-                threadLocalVariable.set(jobConfig.teamChannel());
                 System.out.println("Running job for team: " + jobConfig.teamName());
                 reportService.generateReport(jobConfig.teamName());
             };
