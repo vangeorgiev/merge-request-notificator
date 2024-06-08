@@ -1,4 +1,4 @@
-package com.mergerequestnotificator.application;
+package com.mergerequestnotificator;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

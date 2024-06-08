@@ -1,4 +1,4 @@
-package com.mergerequestnotificator.application;
+package com.mergerequestnotificator;
 
 import com.mergerequestnotificator.schedule.Scheduler;
 import jakarta.annotation.PostConstruct;
