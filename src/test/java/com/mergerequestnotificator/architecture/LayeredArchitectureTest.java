@@ -23,7 +23,7 @@ public class LayeredArchitectureTest {
                 .layer("Core").definedBy("com.mergerequestnotificator.core..")
                 .layer("Gateway").definedBy("com.mergerequestnotificator.gateway..")
                 .layer("Transport").definedBy("com.mergerequestnotificator.transport..")
-                .layer("Application").definedBy("com.mergerequestnotificator.application..")
+                .layer("Application").definedBy("com.mergerequestnotificator..")
                 .whereLayer("Schedule").mayOnlyBeAccessedByLayers("Application")
                 .whereLayer("Core").mayOnlyBeAccessedByLayers("Gateway", "Schedule", "Transport")
                 .whereLayer("Gateway").mayNotBeAccessedByAnyLayer()
